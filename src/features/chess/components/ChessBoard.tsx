@@ -10,6 +10,7 @@ const Board = styled.div`
 
 const ChessBoard = () => {
   const squares = Array.from({ length: 64 });
+  const files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 
   return (
     <Board>
@@ -17,8 +18,10 @@ const ChessBoard = () => {
         const row = Math.floor(index / 8);
         const column = index % 8;
         const isLight = (row + column) % 2 === 0;
+        const file = files[column];
+        const rank = 8 - row;
 
-        return <ChessSquare key={index} isLight={isLight} />;
+        return <ChessSquare key={index} isLight={isLight} rank={rank} file={file} />;
       })}
     </Board>
   );
