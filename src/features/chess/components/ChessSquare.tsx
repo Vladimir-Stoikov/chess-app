@@ -1,9 +1,11 @@
 import styled from 'styled-components';
+import type { ReactNode } from 'react';
 
 interface ChessSquareProps {
   isLight: boolean;
   file: string;
   rank: number;
+  children?: ReactNode;
 }
 
 const ChessSquareSt = styled.div<{ $isLight: boolean }>`
@@ -16,11 +18,12 @@ const ChessSquareSt = styled.div<{ $isLight: boolean }>`
   font-size: 12px;
 `;
 
-const ChessSquare = ({ isLight, file, rank }: ChessSquareProps) => {
+const ChessSquare = ({ isLight, file, rank, children }: ChessSquareProps) => {
   return (
     <ChessSquareSt $isLight={isLight}>
       {rank === 1 && file}
       {file === 'a' && rank}
+      {children}
     </ChessSquareSt>
   );
 };

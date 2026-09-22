@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import ChessSquare from './ChessSquare';
+import Figure from './Figure';
 
 const Board = styled.div`
   display: grid;
@@ -21,7 +22,11 @@ const ChessBoard = () => {
         const file = files[column];
         const rank = 8 - row;
 
-        return <ChessSquare key={index} isLight={isLight} rank={rank} file={file} />;
+        return (
+          <ChessSquare key={index} isLight={isLight} rank={rank} file={file}>
+            <Figure color='white' type='pawn' />
+          </ChessSquare>
+        );
       })}
     </Board>
   );
