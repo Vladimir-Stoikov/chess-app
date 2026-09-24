@@ -1,14 +1,7 @@
 import styled from 'styled-components';
-import type { ReactNode } from 'react';
+import type { ChessSquareProps, ChessSquareStProps } from '../types';
 
-interface ChessSquareProps {
-  isLight: boolean;
-  file: string;
-  rank: number;
-  children?: ReactNode;
-}
-
-const ChessSquareSt = styled.div<{ $isLight: boolean }>`
+const ChessSquareSt = styled.div<ChessSquareStProps>`
   background: ${props => (props.$isLight ? 'white' : 'black')};
   color: ${props => (props.$isLight ? 'black' : 'white')};
   display: flex;

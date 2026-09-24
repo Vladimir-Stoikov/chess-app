@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 
-type FigureType = 'bishop' | 'king' | 'queen' | 'knight' | 'rook' | 'pawn';
-
-export interface IFigure {
-  color: 'white' | 'black';
-  type: FigureType;
-}
+import type { IFigure } from '../types';
 
 const FigureSt = styled.span`
   height: 5px;

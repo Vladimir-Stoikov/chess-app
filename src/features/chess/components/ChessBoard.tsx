@@ -1,6 +1,9 @@
 import styled from 'styled-components';
 import ChessSquare from './ChessSquare';
 import Figure from './Figure';
+import initialPosition from '../initialPosition';
+import { useState } from 'react';
+import type { IFigure } from '../types';
 
 const Board = styled.div`
   display: grid;
@@ -9,7 +12,9 @@ const Board = styled.div`
   aspect-ratio: 1;
 `;
 
-const ChessBoard = () => {
+export default function ChessBoard() {
+  const [position, setPosition] = useState<(IFigure | null)[]>(initialPosition);
+
   const squares = Array.from({ length: 64 });
   const files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 
@@ -21,15 +26,14 @@ const ChessBoard = () => {
         const isLight = (row + column) % 2 === 0;
         const file = files[column];
         const rank = 8 - row;
+        const figure = position[index];
 
         return (
           <ChessSquare key={index} isLight={isLight} rank={rank} file={file}>
-            <Figure color='white' type='pawn' />
+            {figure && <Figure color={figure.color} type={figure.type} />}
           </ChessSquare>
         );
       })}
     </Board>
   );
-};
-
-export default ChessBoard;
+}
