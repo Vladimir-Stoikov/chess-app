@@ -11,6 +11,7 @@ export interface ChessSquareProps {
   isLight: boolean;
   file: string;
   rank: number;
+  onClick: () => void;
   children?: ReactNode;
 }
 

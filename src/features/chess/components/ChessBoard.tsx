@@ -8,7 +8,8 @@ import type { IFigure } from '../types';
 const Board = styled.div`
   display: grid;
   grid-template-columns: repeat(8, 1fr);
-  width: 480px;
+  grid-template-rows: repeat(8, minmax(0, 1fr));
+  width: 500px;
   aspect-ratio: 1;
 `;
 
@@ -17,6 +18,14 @@ export default function ChessBoard() {
 
   const squares = Array.from({ length: 64 });
   const files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
+
+  function handleClick(index: number) {
+    const figure = position[index];
+
+    if (!figure) return;
+
+    console.log(figure.type, figure.color);
+  }
 
   return (
     <Board>
@@ -29,7 +38,7 @@ export default function ChessBoard() {
         const figure = position[index];
 
         return (
-          <ChessSquare key={index} isLight={isLight} rank={rank} file={file}>
+          <ChessSquare key={index} isLight={isLight} rank={rank} file={file} onClick={() => handleClick(index)}>
             {figure && <Figure color={figure.color} type={figure.type} />}
           </ChessSquare>
         );

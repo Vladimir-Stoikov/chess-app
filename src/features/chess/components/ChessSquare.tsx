@@ -11,9 +11,9 @@ const ChessSquareSt = styled.div<ChessSquareStProps>`
   font-size: 12px;
 `;
 
-const ChessSquare = ({ isLight, file, rank, children }: ChessSquareProps) => {
+const ChessSquare = ({ isLight, file, rank, children, onClick }: ChessSquareProps) => {
   return (
-    <ChessSquareSt $isLight={isLight}>
+    <ChessSquareSt $isLight={isLight} onClick={onClick}>
       {rank === 1 && file}
       {file === 'a' && rank}
       {children}
