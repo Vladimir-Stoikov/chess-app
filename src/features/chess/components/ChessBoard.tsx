@@ -15,6 +15,7 @@ const Board = styled.div`
 
 export default function ChessBoard() {
   const [position, setPosition] = useState<(IFigure | null)[]>(initialPosition);
+  const [selectedFigure, setSelectedFigure] = useState<number | null>(null);
 
   const squares = Array.from({ length: 64 });
   const files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
@@ -22,9 +23,12 @@ export default function ChessBoard() {
   function handleClick(index: number) {
     const figure = position[index];
 
-    if (!figure) return;
+    if (!figure || selectedFigure === index) {
+      setSelectedFigure(null);
+      return;
+    }
 
-    console.log(figure.type, figure.color);
+    setSelectedFigure(index);
   }
 
   return (
@@ -38,7 +42,7 @@ export default function ChessBoard() {
         const figure = position[index];
 
         return (
-          <ChessSquare key={index} isLight={isLight} rank={rank} file={file} onClick={() => handleClick(index)}>
+          <ChessSquare key={index} isLight={isLight} isSelected={index === selectedFigure} rank={rank} file={file} onClick={() => handleClick(index)}>
             {figure && <Figure color={figure.color} type={figure.type} />}
           </ChessSquare>
         );

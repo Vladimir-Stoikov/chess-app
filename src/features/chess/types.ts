@@ -9,6 +9,7 @@ export interface IFigure {
 
 export interface ChessSquareProps {
   isLight: boolean;
+  isSelected: boolean;
   file: string;
   rank: number;
   onClick: () => void;
@@ -17,4 +18,5 @@ export interface ChessSquareProps {
 
 export interface ChessSquareStProps {
   $isLight: boolean;
+  $isSelected: boolean;
 }
