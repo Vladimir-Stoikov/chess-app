@@ -21,6 +21,15 @@ export default function ChessBoard() {
   const files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 
   function handleClick(index: number) {
+    if (selectedFigure !== null && position[index] === null) {
+      const newPosition = [...position];
+      newPosition[index] = position[selectedFigure];
+      newPosition[selectedFigure] = null;
+      setPosition(newPosition);
+      setSelectedFigure(null);
+      return;
+    }
+
     const figure = position[index];
 
     if (!figure || selectedFigure === index) {
