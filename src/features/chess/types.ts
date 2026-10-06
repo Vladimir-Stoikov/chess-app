@@ -2,6 +2,8 @@ import type { ReactNode } from 'react';
 
 export type FigureType = 'bishop' | 'king' | 'queen' | 'knight' | 'rook' | 'pawn';
 
+export type turnType = 'white' | 'black' | null;
+
 export interface IFigure {
   color: 'white' | 'black';
   type: FigureType;
