@@ -2,6 +2,8 @@ import type { ReactNode } from 'react';
 
 export type FigureType = 'bishop' | 'king' | 'queen' | 'knight' | 'rook' | 'pawn';
 
+
+
 export type turnType = 'white' | 'black' | null;
 
 export interface IFigure {
@@ -9,9 +11,15 @@ export interface IFigure {
   type: FigureType;
 }
 
+export interface IFigurePlace {
+  color: 'white' | 'black';
+  currentRank: number;
+}
+
 export interface ChessSquareProps {
   isLight: boolean;
   isSelected: boolean;
+  isAvailable: boolean;
   file: string;
   rank: number;
   onClick: () => void;
@@ -21,4 +29,5 @@ export interface ChessSquareProps {
 export interface ChessSquareStProps {
   $isLight: boolean;
   $isSelected: boolean;
+  $isAvailable: boolean;
 }
