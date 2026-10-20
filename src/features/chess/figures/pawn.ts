@@ -3,14 +3,14 @@
 import type { IFigurePlace } from "../types";
 
 const pawn = ({currentRank, color}: IFigurePlace) => {
-  console.log(`I'm a ${color} pawn at ${currentRank} rank`);
+  // console.log(`I'm a ${color} pawn at ${currentRank} rank`);
   let availableMoves: number[] = [];
   let validMoves: number[] = [];
   const currentCol = currentRank % 8;
 
   if(color === 'white') {
-    console.log(`I can move to ${currentRank - 8}, ${currentRank - 16}`);
-    console.log(`I can attack to ${currentRank - 7}, ${currentRank - 9}`);
+    // console.log(`I can move to ${currentRank - 8}, ${currentRank - 16}`);
+    // console.log(`I can attack to ${currentRank - 7}, ${currentRank - 9}`);
     availableMoves = [currentRank - 8, currentRank - 16, currentRank - 7, currentRank - 9];
       validMoves = availableMoves.filter(move => {
     if (move < 0 || move > 63) return false;
@@ -32,8 +32,8 @@ const pawn = ({currentRank, color}: IFigurePlace) => {
   }
 
   if(color === 'black') {
-    console.log(`I can move to ${currentRank + 8}, ${currentRank + 16}`);
-    console.log(`I can attack to ${currentRank + 7}, ${currentRank + 9}`);
+    // console.log(`I can move to ${currentRank + 8}, ${currentRank + 16}`);
+    // console.log(`I can attack to ${currentRank + 7}, ${currentRank + 9}`);
     availableMoves = [currentRank + 8, currentRank + 16, currentRank + 7, currentRank + 9];
       validMoves = availableMoves.filter(move => {
     if (move < 0 || move > 63) return false;

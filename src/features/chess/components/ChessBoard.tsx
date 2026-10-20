@@ -36,12 +36,19 @@ export default function ChessBoard() {
 
   function handleClick(index: number) {
     console.log(index, position[index], selectedFigure);
+    setAvailableMoves([]);
 
     if (selectedFigure === null && position[index]?.color !== currentTurn) {
       return;
     }
 
     if (selectedFigure !== null && position[index]?.color !== currentTurn) {
+      console.log('you can go here, ', availableMoves);
+      const canImove = availableMoves.includes(index);
+      if (!canImove) {
+        setSelectedFigure(null);
+        return;
+      }
       const newPosition = [...position];
       newPosition[index] = position[selectedFigure];
       newPosition[selectedFigure] = null;
@@ -56,6 +63,7 @@ export default function ChessBoard() {
 
     if (!figure || selectedFigure === index) {
       setSelectedFigure(null);
+      setAvailableMoves([]);
       return;
     }
 
