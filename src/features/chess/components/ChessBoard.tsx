@@ -5,6 +5,7 @@ import initialPosition from '../initialPosition';
 import { useState } from 'react';
 import type { IFigure, turnType } from '../types';
 import pawn from '../figures/pawn';
+import king from '../figures/king';
 
 const Board = styled.div`
   display: grid;
@@ -28,6 +29,9 @@ export default function ChessBoard() {
     switch (type) {
       case 'pawn':
         setAvailableMoves([...pawn({ currentRank: rank, color: color })]);
+        break;
+      case 'king':
+        setAvailableMoves([...king({ currentRank: rank, color: color })]);
         break;
       default:
         console.log(`error`);
