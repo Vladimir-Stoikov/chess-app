@@ -6,6 +6,7 @@ import { useState } from 'react';
 import type { IFigure, turnType } from '../types';
 import pawn from '../figures/pawn';
 import king from '../figures/king';
+import knight from '../figures/knight';
 
 const Board = styled.div`
   display: grid;
@@ -24,7 +25,7 @@ export default function ChessBoard() {
   const squares = Array.from({ length: 64 });
   const files = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
 
-  function checkMoves(color, type, rank) {
+  function checkMoves(color: IFigure['color'], type: IFigure['type'], rank: number) {
     console.log(`check availbl moves for ${color} ${type} at rank ${rank}`);
     switch (type) {
       case 'pawn':
@@ -32,6 +33,9 @@ export default function ChessBoard() {
         break;
       case 'king':
         setAvailableMoves([...king({ currentRank: rank, color: color })]);
+        break;
+      case 'knight':
+        setAvailableMoves([...knight({ currentRank: rank, color: color })]);
         break;
       default:
         console.log(`error`);
