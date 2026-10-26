@@ -7,6 +7,7 @@ import type { IFigure, turnType } from '../types';
 import pawn from '../figures/pawn';
 import king from '../figures/king';
 import knight from '../figures/knight';
+import rook from '../figures/rook';
 
 const Board = styled.div`
   display: grid;
@@ -29,13 +30,16 @@ export default function ChessBoard() {
     console.log(`check availbl moves for ${color} ${type} at rank ${rank}`);
     switch (type) {
       case 'pawn':
-        setAvailableMoves([...pawn({ currentRank: rank, color: color })]);
+        setAvailableMoves([...pawn({ currentRank: rank, color: color, position })]);
         break;
       case 'king':
-        setAvailableMoves([...king({ currentRank: rank, color: color })]);
+        setAvailableMoves([...king({ currentRank: rank, color: color, position })]);
         break;
       case 'knight':
-        setAvailableMoves([...knight({ currentRank: rank, color: color })]);
+        setAvailableMoves([...knight({ currentRank: rank, color: color, position })]);
+        break;
+      case 'rook':
+        setAvailableMoves([...rook({ currentRank: rank, color: color, position })]);
         break;
       default:
         console.log(`error`);

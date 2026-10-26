@@ -2,8 +2,8 @@
 
 import type { IFigurePlace } from "../types";
 
-const pawn = ({currentRank, color}: IFigurePlace) => {
-  // console.log(`I'm a ${color} pawn at ${currentRank} rank`);
+const pawn = ({currentRank, color, position}: IFigurePlace) => {
+  console.log(`I'm a ${color} pawn at ${currentRank} rank`, position);
   let availableMoves: number[] = [];
   let validMoves: number[] = [];
   const currentCol = currentRank % 8;

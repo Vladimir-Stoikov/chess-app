@@ -14,6 +14,7 @@ export interface IFigure {
 export interface IFigurePlace {
   color: 'white' | 'black';
   currentRank: number;
+  position: (IFigure | null)[];
 }
 
 export interface ChessSquareProps {
