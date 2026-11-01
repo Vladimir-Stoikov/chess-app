@@ -8,6 +8,7 @@ import pawn from '../figures/pawn';
 import king from '../figures/king';
 import knight from '../figures/knight';
 import rook from '../figures/rook';
+import bishop from '../figures/bishop';
 
 const Board = styled.div`
   display: grid;
@@ -40,6 +41,9 @@ export default function ChessBoard() {
         break;
       case 'rook':
         setAvailableMoves([...rook({ currentRank: rank, color: color, position })]);
+        break;
+      case 'bishop':
+        setAvailableMoves([...bishop({ currentRank: rank, color: color, position })]);
         break;
       default:
         console.log(`error`);
