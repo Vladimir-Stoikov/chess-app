@@ -1,8 +1,8 @@
 // Check king moves
 
-import type { IFigurePlace } from "../types";
+import type { IFigurePlace } from '../types';
 
-const king = ({currentRank, color, position}: IFigurePlace) => {
+const king = ({ currentRank, color, position }: IFigurePlace) => {
   console.log(`I'm a ${color} king at ${currentRank} rank`, position);
   let availableMoves: number[] = [];
   let validMoves: number[] = [];
@@ -12,22 +12,25 @@ const king = ({currentRank, color, position}: IFigurePlace) => {
 
   validMoves = availableMoves.filter(move => {
     if (move < 0 || move > 63) return false;
+    if (position[move] !== null) {
+      if (position[move].color === color) {
+        return false;
+      }
+    }
 
     const moveCol = move % 8;
     const colDiff = Math.abs(moveCol - currentCol);
 
-
-    if (move === currentRank - 1 || move === currentRank - 7 ||  move === currentRank - 9 || move === currentRank + 1 || move === currentRank + 7 || move === currentRank + 9) {
-      return colDiff === 1; 
+    if (move === currentRank - 1 || move === currentRank - 7 || move === currentRank - 9 || move === currentRank + 1 || move === currentRank + 7 || move === currentRank + 9) {
+      return colDiff === 1;
     }
 
     if (move === currentRank - 8 || move === currentRank + 8) {
-      return true; 
+      return true;
     }
 
     return false;
-
-  })
+  });
 
   return validMoves;
 };

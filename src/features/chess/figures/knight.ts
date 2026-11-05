@@ -1,8 +1,8 @@
 // Check knight moves
 
-import type { IFigurePlace } from "../types";
+import type { IFigurePlace } from '../types';
 
-const knight = ({currentRank, color, position}: IFigurePlace) => {
+const knight = ({ currentRank, color, position }: IFigurePlace) => {
   console.log(`I'm a ${color} knight at ${currentRank} rank`, position);
   let availableMoves: number[] = [];
   let validMoves: number[] = [];
@@ -12,6 +12,11 @@ const knight = ({currentRank, color, position}: IFigurePlace) => {
 
   validMoves = availableMoves.filter(move => {
     if (move < 0 || move > 63) return false;
+    if (position[move] !== null) {
+      if (position[move].color === color) {
+        return false;
+      }
+    }
 
     const moveCol = move % 8;
     const colDiff = Math.abs(moveCol - currentCol);
@@ -25,7 +30,7 @@ const knight = ({currentRank, color, position}: IFigurePlace) => {
     }
 
     return false;
-  })
+  });
 
   return validMoves;
 };
